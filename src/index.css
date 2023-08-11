@@ -1,3 +1,11 @@
+:root {
+	--primary-green: #bbd388;
+	--dark-green: #434838;
+	--light-green: #d9ef81;
+	--dark-color-01: #090f08;
+	--dark-color: #777d71;
+	--light-color: #dfddc5;
+}
 * {
 	/* margin: 0;
 	padding: 0; */
@@ -55,6 +63,10 @@ textarea {
 	padding: 0.8em 0;
 	background-color: transparent;
 }
+span {
+	color: var(--primary-green);
+	font-weight: 600;
+}
 
 .btn {
 	background-color: #1a8918;
@@ -69,7 +81,7 @@ textarea {
 	font-size: 1em;
 }
 .btn:hover {
-	background-color: #0f730c;
+	background-color: var(--light-green);
 	color: #fff;
 }
 .btn.btn-dark {
