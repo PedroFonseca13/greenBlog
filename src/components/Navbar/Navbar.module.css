@@ -10,11 +10,6 @@
 	font-size: 1.2em;
 }
 
-.brand span {
-	font-weight: 900;
-	text-transform: uppercase;
-}
-
 .links__list {
 	display: flex;
 	list-style: none;
