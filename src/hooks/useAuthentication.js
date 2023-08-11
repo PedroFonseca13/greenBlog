@@ -26,6 +26,7 @@ export const useAuthentication = () => {
 		}
 	}
 
+	// register
 	const createUser = async (data) => {
 		checkIfIsCancelled()
 		setLoading(true)
@@ -63,6 +64,37 @@ export const useAuthentication = () => {
 		}
 	}
 
+	// logout user
+	const logout = () => {
+		checkIfIsCancelled()
+
+		signOut(auth)
+	}
+
+	const login = async (data) => {
+		checkIfIsCancelled()
+
+		setLoading(true)
+		setError(false)
+
+		try {
+			await signInWithEmailAndPassword(auth, data.email, data.password)
+			setLoading(false)
+		} catch (error) {
+			let systemErrorMessage
+
+			if (error.message.includes('user-not-found')) {
+				systemErrorMessage = 'e-mail or password is invalid'
+			} else if (error.message.includes('invalid-password')) {
+				systemErrorMessage = 'e-mail or password is invalid'
+			} else {
+				systemErrorMessage = 'Internal server error'
+			}
+			setLoading(false)
+			setError(systemErrorMessage)
+		}
+	}
+
 	useEffect(() => {
 		return () => setCancelled(true)
 	}, [])
@@ -72,5 +104,7 @@ export const useAuthentication = () => {
 		createUser,
 		error,
 		loading,
+		logout,
+		login,
 	}
 }
