@@ -11,17 +11,18 @@ import Navbar from './components/Navbar'
 import About from './pages/About'
 import CreatePost from './pages/CreatePost'
 import Dashboard from './pages/Dashboard'
+import EditPost from './pages/EditPost'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Post from './pages/Post'
 import Register from './pages/Register'
+import Search from './pages/Search'
 
 // context
 import { AuthProvider } from './context/AuthContext'
 
 // hooks
 import { useAuthentication } from './hooks/useAuthentication'
-import Search from './pages/Search'
-import Post from './pages/Post'
 
 function App() {
 	const [user, setUser] = useState(undefined)
@@ -63,6 +64,10 @@ function App() {
 							<Route
 								path="/posts/create"
 								element={user ? <CreatePost /> : <Navigate to="/login" />}
+							/>
+							<Route
+								path="/posts/edit/:id"
+								element={user ? <EditPost /> : <Navigate to="/login" />}
 							/>
 						</Routes>
 					</div>
